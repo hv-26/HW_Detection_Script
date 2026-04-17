@@ -39,8 +39,9 @@ $hardwareInfo = @{
     "Network_Adapters" = $network
 }
 
-# Output to JSON file in the same directory as the script
-$outputPath = Join-Path -Path $PSScriptRoot -ChildPath "hardware_specs.json"
+# Output to JSON file
+$outputPath = Join-Path -Path $env:USERPROFILE\Desktop -ChildPath "lab_hardware_specs.json"
+
 $hardwareInfo | ConvertTo-Json -Depth 4 | Out-File -FilePath $outputPath -Encoding UTF8
 
 Write-Host "Success! Hardware specs saved to: $outputPath" -ForegroundColor Green
